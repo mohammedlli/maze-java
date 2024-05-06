@@ -2,16 +2,6 @@
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
-
-/**
- * MAZE (Laberinto)
- * En este archivo definimos la forma del laberinto y los niveles de juego. 
- * Inicialmente se definen la cantidad de filas y columnas donde se formará el 
- * laberinto, asi como las dimensiones de los bloques que rellenaran las 
- * intersecciones fila/columna
- * @author fucalex
- * 
- */
 public class Maze {
     int[][]lab=new int[13][23];
     int row=0;
@@ -22,10 +12,6 @@ public class Maze {
     int blockheight=40;
 
     boolean check = false;
-    /**
-    * Definicion de colores de fondo para los laberintos segun nivel
-    * con el fin de ayudar a diferenciar el paso por los multiples niveles.
-    */
 
     public void paint(Graphics grafico){
         int [][]maze=getMaze();
@@ -58,27 +44,12 @@ public class Maze {
         grafico.drawRect(206, 206, 30, 30);
         grafico.setColor(Color.yellow);
         grafico.drawString("hint", 210, 220 );
-//        grafico.fillRect(190 + 14, 190 + 24, 13, 14);
     }
     
     public int [][] getMaze(){
         if(Avatar.x == 200 && Avatar.y == 200){
             check = true;        }
         if(Game.getLevel()==1){
-            
-        /**
-        * FORMACION DE LABERINTOS
-        * - Ancho: colnumber=23 (columnas)
-        * - Alto: rownumber=13 (filas)
-        *Notese que los "1", forman bloques sólidos
-        *los cuales no pueden ser traspasados por el personaje.
-        *Esos mismos bloques se usan para formar los bordes del laberinto.
-        *
-        * El jugador entonces, moverá el avatar, por los espacios "vacios" 
-        * indicados por los "0".
-        */
-        
-            //Level 1
             int maze[][]=
             {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
             { 1,0,0,1,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,1,1},
@@ -119,8 +90,7 @@ public class Maze {
         }
         
         if(Game.getLevel()==3){
-            
-            //Level 3
+
             int maze [][]=
             {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
             { 1,0,0,0,1,0,0,0,0,0,0,1,1,1,0,0,1,1,3,0,0,1,1},
