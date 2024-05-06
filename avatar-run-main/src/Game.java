@@ -1,8 +1,3 @@
-/**
- * PANEL DE JUEGO Y OPCIONES DE BASE
- * @author fucalex
- * 
- */
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -18,11 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.lang.Thread;
-/**
- * El panel de juego (Game) hereda atributos y métodos de la clase principal
- * (o clase base) "JPanel", sin embargo, "Game", al ser una subclase, puede 
- * agregar sus propios campos y métodos. (Pilar fundamental de la POO).
- */
 public class Game extends JPanel{
     Maze maze=new Maze();
     Avatar avatar=new Avatar();
@@ -30,16 +20,6 @@ public class Game extends JPanel{
 
     public  static  String wordInput = "";
     public  static  String word = "";
-
-   /**
-    * Para leer del teclado es necesario registrar un objeto que se encargue de 
-    * "escuchar" si una tecla es presionada. Este objeto es conocido como 
-    * "Listener", con metodos que seran llamados cuando se presione una tecla. 
-    * Aqui, el Listener se registra en "Game" usando el método addKeyListener.
-    * 
-    * Nota: la (e), significa "event"
-    */
-
     public  Game(){
         addKeyListener(new KeyListener(){
             @Override
@@ -63,33 +43,14 @@ public class Game extends JPanel{
     });
         setFocusable(true);
     }
-    
-   /**
-    * Las caracteristicas visibles del laberinto y el personaje, son definidas 
-    * en sus respectivos archivos
-     * @param grafico
-    */
-
     public void paint(Graphics grafico){
         maze.paint(grafico);
         avatar.paint(grafico);
     }
-   /**
-    * Para cambiar de nivel, cuando el avatar llegue a una posicion determinada
-    * en el laberinto (definido en avatar.java), al nivel actual se le sumará 
-    * una unidad para indicar que se debe cargar el siguiente nivel en el
-	* frame del juego.
-    */    
+   
     public static int changeLevel(){
         return level++;
     }
-    
-   /**
-    * Para cargar el laberinto, cuando se cargue la base del siguiente nivel,
-    * dependiendo el número de la misma (1, 2 o 3), se cargará el laberinto
-    * (definido en maze.java), por medio de "return level".
-    */
-
    public static String encrypt(String message, int key) {
        String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -134,13 +95,6 @@ public class Game extends JPanel{
         return level;
     }
     
-   /**
-    * Aqui definimos el tamaño y el titulo de la ventana del juego 
-    * (en pixeles (ancho, alto), qué va a ir en ella (el juego en sí y su 
-    * localizacion ["setlocation", definido en coordenadas]), y la forma en la 
-    * que cerraremos el juego.
-    */ 
-
     public static void main(String[]args) throws Exception {
 
                  String input = JOptionPane.showInputDialog("<html><body style='width: 100%; borderRadius: 10px; text-align: center; background:#38bdf8; border-radius: 5px; border:6px solid #1d4ed8; '>"
